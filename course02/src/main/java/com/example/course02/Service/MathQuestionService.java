@@ -5,14 +5,15 @@ import com.example.course02.interfaces.QuestionRepository;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.Random;
 
-@Service("javaService")
-public class JavaQuestionServiceImpl implements QuestionService {
+@Service("mathService")
+public class MathQuestionService implements QuestionService {
     private final Random rng = new Random();
     private final QuestionRepository questionRepository;
 
-    public JavaQuestionServiceImpl(@Qualifier("javaRepository") QuestionRepository questionRepository) {
+    public MathQuestionService(@Qualifier("mathRepository") QuestionRepository questionRepository) {
         this.questionRepository = questionRepository;
     }
 

@@ -13,12 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Collection;
 
 @RestController
-@RequestMapping(path = "/java")
-public class JavaQuestionController {
-
+@RequestMapping(path = "/math")
+public class MathQuestionController {
     private final QuestionService questionService;
 
-    public JavaQuestionController(@Qualifier("javaService") QuestionService questionService) {
+    public MathQuestionController(@Qualifier("mathService") QuestionService questionService) {
         this.questionService = questionService;
     }
 
@@ -27,10 +26,12 @@ public class JavaQuestionController {
         var result = questionService.add(question, answer);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
+
     @GetMapping()
     public ResponseEntity<Collection<Question>> getAllQuestions() {
         return new ResponseEntity<>(questionService.getAll(), HttpStatus.OK);
     }
+
     @GetMapping(path = "/remove")
     public ResponseEntity<Question> removeQuestion(@RequestParam String question, @RequestParam String answer) {
         var result = new Question(question, answer);
